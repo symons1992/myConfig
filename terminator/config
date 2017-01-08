@@ -1,0 +1,37 @@
+[global_config]
+  enabled_plugins = TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  scroll_tabbar = True
+  title_font = mononoki 16
+  title_transmit_bg_color = "#0a0a0a"
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 264537d8-0dfa-4e53-89be-bc33bb32659a
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1031
+      title = symons@symons_laptop:~/twemproxy
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 264537d8-0dfa-4e53-89be-bc33bb32659a
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#ffffff"
+    background_image = None
+    font = mononoki 14
+    foreground_color = "#000000"
+    palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
+    show_titlebar = False
+    use_system_font = False
+    visible_bell = True
