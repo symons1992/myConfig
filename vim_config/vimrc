@@ -1,0 +1,144 @@
+set nocompatible
+filetype off 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
+call vundle#end()
+filetype plugin indent on
+
+runtime! debian.vim
+set encoding=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set fileencodings=utf-8,ucs-bom,chinese
+
+set langmenu=zh_CN.UTF-8
+
+command W  w
+command Q  q
+
+
+syntax enable
+
+colorscheme molokai
+"colorscheme github
+set t_Co=256
+
+set showmatch
+
+set nocompatible
+
+set hlsearch
+
+set incsearch
+
+set ignorecase
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set cindent
+
+filetype on
+
+set fdm=manual
+
+set foldenable
+"开启/关闭折叠
+
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+" usage:
+" a,b,c,d,e,f    ---->    a,
+"						  b,
+"						  c,
+"						  d,
+"						  e,
+"						  f
+nnoremap <C-J> 0f,a<CR><Esc>
+
+au BufWinLeave * silent mkview 
+au BufWinEnter * silent loadview
+
+set viewdir=$HOME/.vim/view
+
+let Tlist_Show_One_File=0   "显示多个文件的tags
+let Tlist_File_Fold_Auto_Close=1 "非当前文件，函数列表折叠隐藏
+let Tlist_Exit_OnlyWindow=1 "在taglist是最后一个窗口时退出vim
+let Tlist_Use_SingleClick=1 "单击时跳转
+let Tlist_GainFocus_On_ToggleOpen=1 "打开taglist时获得输入焦点
+let Tlist_Process_File_Always=1 "不管taglist窗口是否打开，始终解析文件中的tag
+
+let g:miniBufExplMapWindowNavVim=1
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+let g:miniBufExplMoreThanOne=0
+
+set cscopequickfix=s-,c-,d-,i-,t-,e- "设定是否使用quickfix窗口显示cscope结果
+
+set completeopt=longest,menu "关掉智能补全时的预览窗口
+
+if exists("tags")
+	set tags=./tags
+endif
+
+set shell=bash
+
+set history=400
+
+if exists("&autoread")
+	set autoread
+endif
+
+set ambiwidth=double
+
+set ffs=unix,dos,mac
+
+set incsearch
+
+set noerrorbells
+set novisualbell
+set t_vb=
+
+set nobackup
+set nowb
+set nu
+
+function! CurDir()
+    let curdir = substitute(getcwd(), $HOME, "~", "g")
+    return curdir
+endfunction
+set laststatus=2
+set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|\ \ %{fugitive#statusline()}\ \ \|\ \ col\:\ %v
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on   "打开文件类型检测
+
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
+
+
+let g:jedi#auto_vim_configuration = 1
+
+
+autocmd InsertEnter * se cul    " 用浅色高亮当前行  
+set cursorline
+set ruler                   " Show the ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+set showcmd                 " Show partial commands in status line and
+
+" for golang
+let g:go_fmt_command = "goimports"
+inoremap <C-f> <C-x><C-o>
