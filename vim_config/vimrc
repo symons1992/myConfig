@@ -3,7 +3,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'fatih/vim-go'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'nsf/gocode'
 call vundle#end()
 filetype plugin indent on
 
@@ -111,7 +111,7 @@ function! CurDir()
     return curdir
 endfunction
 set laststatus=2
-set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|\ \ %{fugitive#statusline()}\ \ \|\ \ col\:\ %v
+set statusline=[%n]\ %f%m%r%h\ \|\ \ pwd:\ %{CurDir()}\ \ \|\ \ col\:\ %v
 
 execute pathogen#infect()
 syntax on
