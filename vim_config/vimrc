@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'fatih/vim-go'
 Plugin 'nsf/gocode'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 filetype plugin indent on
 
@@ -142,3 +143,9 @@ set showcmd                 " Show partial commands in status line and
 " for golang
 let g:go_fmt_command = "goimports"
 inoremap <C-f> <C-x><C-o>
+
+" for NERDTree
+autocmd VimEnter * NERDTree
+let g:NERDTreeShowLineNumbers=1
+autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap ,n :NERDTreeFind<CR>
